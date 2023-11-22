@@ -1,8 +1,6 @@
-package umc.study.domain.mapping;
+package umc.study.domain;
 
 import lombok.*;
-import umc.study.domain.Member;
-import umc.study.domain.Terms;
 import umc.study.domain.common.BaseEntity;
 
 import javax.persistence.*;
@@ -12,17 +10,15 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class MemberAgree extends BaseEntity {
+public class ReviewImage extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
+    private String imageUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "terms_id")
-    private Terms terms;
+    @JoinColumn(name = "review_id")
+    private Review review;
 }

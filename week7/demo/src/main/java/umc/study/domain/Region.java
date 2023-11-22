@@ -1,6 +1,7 @@
 package umc.study.domain;
 
 import lombok.*;
+import lombok.extern.java.Log;
 import umc.study.domain.common.BaseEntity;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Store extends BaseEntity {
+public class Region extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,14 +21,6 @@ public class Store extends BaseEntity {
 
     private String name;
 
-    private String address;
-
-    private Float score;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "region_id")
-    private Region region;
-
-    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
-    private List<Mission> missionList = new ArrayList<>();
+    @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
+    private List<Store> storeList = new ArrayList<>();
 }
