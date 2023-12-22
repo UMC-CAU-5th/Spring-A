@@ -25,7 +25,4 @@ public class MissionRestController {
         Mission mission = missionService.addMissionToStore(request);
         return ApiResponse.onSuccess(MissionConverter.toStoreResult(mission, mission.getStore()));
     }
-
-    @PostMapping("/{}")
-    public ApiResponse<>
 }
